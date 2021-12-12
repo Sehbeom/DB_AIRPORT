@@ -1,0 +1,75 @@
+<nav class="navbar navbar-light fst-italic" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h1 class="display-6  text-secondary fw-bold">AIRPLANE RESERVATION SYSTEM_AIRPLANE</h1></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/admin/airport_info">Airport</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/airplane_info">Airplane</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/leg_info">Leg_instance</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">항공기 ID</th>
+            <th scope="col">좌석 수</th>
+            <th scope="col">항공기 분류</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+
+            {{#each airplane}}
+        <form method="post" action="/admin/airplane_info/edit">
+            <tr>
+                <th scope="row">
+                    {{airplane_id}}
+                    <input type="hidden" name="airplane_id" value={{airplane_id}}>
+                </th>
+                <td><input type="text" name="seats" value={{total_number_of_seats}}></td>
+                <td>
+                    {{airplane_type}}
+                    <input type="hidden" name="type" value={{airplane_type}}>
+                </td>
+                <td>
+                    <button class="btn btn-secondary btn-sm" name='editBtn' type="submit"
+                        value="{{airplane_id}}">수정</button>
+                    <button class="btn btn-danger btn-sm" name='delBtn' type="submit"
+                        value="{{airplane_id}}">삭제</button>
+                </td>
+            </tr>
+        </form>
+            {{/each}}
+        <form method="post" action="/admin/airplane_info/edit">
+            <tr>
+                <th scope="row"><input type="text" name="set" placeholder="항공기ID"></th>
+                <td><input type="text" name="set" placeholder="좌석 수"></td>
+                <td><input type="text" name="set" placeholder="항공기 분류"></td>
+                <td>
+                    <button class="btn btn-secondary btn-sm" name='insertBtn' type="submit">추가</button>
+                </td>
+            </tr>
+        </form>
+
+    </tbody>
+</table>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" type="button" onclick="location.href='/admin/airplane_info'">돌아가기</button>
+</div>

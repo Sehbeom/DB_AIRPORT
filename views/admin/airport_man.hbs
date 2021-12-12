@@ -1,0 +1,74 @@
+<nav class="navbar navbar-light fst-italic" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h1 class="display-6  text-secondary fw-bold">AIRPLANE RESERVATION SYSTEM_AIRPORT</h1></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/admin/airport_info">Airport</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/airplane_info">Airplane</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/leg_info">Leg_instance</a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">공항 코드</th>
+            <th scope="col">공항 이름</th>
+            <th scope="col">위치(City)</th>
+            <th scope="col">위치(State)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {{#each airport}}
+        <form method="post" action="/admin/airport_info/edit">
+            <tr>
+                <th scope="row">
+                    {{airport_code}}
+                    <input type="hidden" name="airport_code" value={{airport_code}}></th>
+                <td><input type="text" name="name" value={{name}}></td>
+                <td><input type="text" name="city" value={{city}}></td>
+                <td><input type="text" name="state" value={{state}}></td>
+                <td>
+                    <button class="btn btn-secondary btn-sm" name='editBtn' type="submit"
+                        value="{{airport_code}}">수정</button>
+                    <button class="btn btn-danger btn-sm" name='delBtn' type="submit"
+                        value="{{airport_code}}">삭제</button>
+                </td>
+            </tr>
+        </form>
+
+            {{/each}}
+        <form method="post" action="/admin/airport_info/edit">
+            <tr>
+                <th scope="row"><input type="text" name="set" placeholder="공항코드"></th>
+                <td><input type="text" name="set" placeholder="공항이름"></td>
+                <td><input type="text" name="set" placeholder="위치(city)"></td>
+                <td><input type="text" name="set" placeholder="위치(state)"></td>
+                <td>
+                    <button class="btn btn-secondary btn-sm" name='insertBtn' type="submit">추가</button>
+                </td>
+            </tr>
+        </form>
+
+
+    </tbody>
+</table>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" type="button" onclick="location.href='/admin/airport_info'">돌아가기</button>
+</div>

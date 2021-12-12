@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light fst-italic" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h1 class="display-6  text-secondary fw-bold">AIRPLANE RESERVATION SYSTEM</h1></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user/myres?user_number={{user_number}}">My Reservation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user/leg_res?user_number={{user_number}}">Flight Reservation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">항공사</th>
+            <th scope="col">출발지</th>
+            <th scope="col">출발시간</th>
+            <th scope="col">도착지</th>
+            <th scope="col">도착시간</th>
+            <th scope="col">날짜</th>
+            <th scope="col">항공기ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each myres}}
+        <tr>
+            <th scope="row">{{airline}}</th>
+            <td>{{departure}}</td>
+            <td>{{depart_time}}</td>
+            <td>{{arrival}}</td>
+            <td>{{arrive_time}}</td>
+            <td>{{date_info}}</td>
+            <td>{{seats}}</td>
+            <td>{{airplane_id}}</td>
+            <td><button type="button" class="btn btn-secondary btn-sm">취소하기</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
